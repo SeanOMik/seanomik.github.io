@@ -1,0 +1,419 @@
+#player {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+}
+
+#map {
+  position: relative;
+  border: 1px solid black;
+  height: 700px;
+  width: 1400px;
+}
+
+#inventory {
+  width: 300px;
+  height: 100px;
+  background-color: blue;
+  position: absolute;
+  padding: 10px;
+  top: 30px;
+  left: 30px;
+}
+#invbutton {
+  position: absolute;
+}
+#exitInventory {
+  position: absolute;
+  top: 95px;
+  left: 275px;
+}
+#pokemonList {
+  width: 300px;
+  height: 300px;
+  background-color: orange;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+#pokemonListBackBtn {
+  position: absolute;
+  top: 275px;
+  left: 250px;
+}
+#medicineBtn {
+  position: absolute;
+  left: 80px;
+}
+#medicineMenu {
+  width: 300px;
+  height: 300px;
+  background-color: orange;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+#medicineBackBtn {
+  position: absolute;
+  top: 275px;
+  left: 250px;
+}
+#pokemon0 {
+  position: absolute;
+  top: 0px;
+}
+#pokemon0Health {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+#pokemon1 {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+}
+#pokemon1Health {
+  position: absolute;
+  top: 75px;
+  left: 60px;
+}
+#pokemon2 {
+  position: absolute;
+  top: 120px;
+  left: 0px;
+}
+#pokemon2Health {
+  position: absolute;
+  top: 135px;
+  left: 60px;
+}
+#pokemon3 {
+  position: absolute;
+  top: 180px;
+  left: 0px;
+}
+#pokemon3Health {
+  position: absolute;
+  top: 150px;
+  left: 60px;
+}
+#pokemon4 {
+  position: absolute;
+  top: 240px;
+  left: 0px;
+}
+#pokemon4Health {
+  position: absolute;
+  top: 165px;
+  left: 60px;
+}
+#pokemon5 {
+  position: absolute;
+  top: 300px;
+  left: 0px;
+}
+#pokemon5Health {
+  position: absolute;
+  top: 180px;
+  left: 60px;
+}
+#pokemonListMedicine {
+  width: 300px;
+  height: 300px;
+  background-color: orange;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+#pokemonListMedicineBackBtn {
+  position: absolute;
+  top: 275px;
+  left: 250px;
+}
+#pokemon0MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 0px;
+}
+#pokemon1MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 60px;
+}
+#pokemon2MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 120px;
+}
+#pokemon3MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 180px;
+}
+#pokemon4MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 240px;
+}
+#pokemon5MedicineDiv {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 300px;
+}
+#pokemon0Medicine {
+  position: absolute;
+  top: 0px;
+}
+#pokemon1Medicine {
+  position: absolute;
+  top: 60px;
+}
+#pokemon2Medicine {
+  position: absolute;
+  top: 120px;
+}
+#pokemon3Medicine {
+	position: absolute;
+  top: 180px;
+}
+#pokemon4Medicine {
+	position: absolute;
+  top: 240px;
+}
+#pokemon5Medicine {
+	position: absolute;
+  top: 300px;
+}
+#pokemon0HealthMedicine {
+  position: absolute;
+  top: 15px;
+  left: 60px;
+}
+#pokemon1HealthMedicine {
+  position: absolute;
+  top: 75px;
+  left: 60px;
+}
+#pokemon2HealthMedicine {
+  position: absolute;
+  top: 135px;
+  left: 60px;
+}
+#pokemon3HealthMedicine {
+	position: absolute;
+  top: 180px;
+  left: 60px;
+}
+#pokemon4HealthMedicine {
+	position: absolute;
+  top: 195px;
+  left: 60px;
+}
+#pokemon5HealthMedicine {
+	position: absolute;
+  top: 210px;
+  left: 60px;
+}
+#pokemonEnemy {
+	position: absolute;
+	top: 100px;
+	left: 1200px;
+}
+#pokemonBattle {
+	position: relative;
+	height: 700px;
+  width: 1400px;
+	background-color: green;
+	top: 0px;
+	left: 0px;
+}
+#pokemonAttackBtn {
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	top: 530px;
+	left: 980px;
+}
+#pokemonBattleHealth {
+	width: 197px;
+	position: absolute;
+	top: 510px;
+	left: 980px;
+}
+#playersPokemon {
+	width: 197px;
+	position: absolute;
+	top: 510px;
+	left: 280px;
+}
+#enemyPokemonNameHealth {
+	background-color: blue;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	width: 300px;
+  height: 100px;
+}
+#playersPokemonAttackList {
+	background-color: blue;
+	position: absolute;
+	top: 530px;
+	left: 950px;
+	width: 300px;
+  height: 100px;
+}
+#playersPokemonAttackListBackBtn {
+	position: absolute;
+	top: 600px;
+	left: 1195px;
+}
+#runButton {
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	top: 530px;
+	left: 1180px;
+}
+#enemyHealth {
+	position: absolute;
+	top: 90px;
+	left: 60px;
+}
+#whatsHappeningInBattle {
+	color: white;
+	background-color: blue;
+	position: absolute;
+	top: 530px;
+	left: 550px;
+	width: 300px;
+  height: 100px;
+}
+#whatHappens {
+	color: white;
+}
+#chooseNewBattlePokemon {
+	background-color: blue;
+	position: absolute;
+	top: 300px;
+	left: 550px;
+	width: 300px;
+  height: 350px;
+}
+#chooseNewBattlePokemonDiv0 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 0px;
+}
+#chooseNewBattlePokemonDiv1 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 60px;
+}
+#chooseNewBattlePokemonDiv2 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 120px;
+}
+#chooseNewBattlePokemonDiv3 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 180px;
+}
+#chooseNewBattlePokemonDiv4 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 240px;
+}
+#chooseNewBattlePokemonDiv5 {
+	width: 225px;
+	height: 50px;
+  position: absolute;
+  top: 300px
+}
+#chooseNewBattlePokemonIMG0 {
+	position: absolute;
+  top: 0px;
+}
+#chooseNewBattlePokemonIMG1 {
+	position: absolute;
+  top: 60px;
+}
+#chooseNewBattlePokemonIMG2 {
+	position: absolute;
+  top: 120px;
+}
+#chooseNewBattlePokemonIMG3 {
+	position: absolute;
+  top: 180px;
+}
+#chooseNewBattlePokemonIMG4 {
+	position: absolute;
+  top: 240px;
+}
+#chooseNewBattlePokemonIMG5 {
+	position: absolute;
+  top: 300px;
+}
+#chooseNewBattlePokemonHealth0 {
+	position: absolute;
+  top: 15px;
+  left: 60px;
+}
+#chooseNewBattlePokemonHealth1 {
+	position: absolute;
+  top: 75px;
+  left: 60px;
+}
+#chooseNewBattlePokemonHealth2 {
+	position: absolute;
+  top: 135px;
+  left: 60px;
+}
+#chooseNewBattlePokemonHealth3 {
+	position: absolute;
+  top: 195px;
+  left: 60px;
+}
+#chooseNewBattlePokemonHealth4 {
+	position: absolute;
+  top: 255px;
+  left: 60px;
+}
+#chooseNewBattlePokemonHealth5 {
+	position: absolute;
+  top: 315px;
+  left: 60px;
+}
+/*Tall grass's*/
+#tallGrass {
+	position: absolute;
+	top: 100px;
+	left: 0px;
+}
+
+/*Moves */
+#VineWhip {
+	
+}
+#Growl {
+	
+}
+#ThunderBolt {
+
+}
+#FlameThrower {
+
+}
+/*Test*/
