@@ -324,6 +324,7 @@ $(document).ready(function() {
 		invOpen = "true";
   }
 	function battle(ranAgain) {
+		inTallGrass = "false";
 		if (ranAgain === "true") {
 			$("#whatsHappeningInBattle").hide();
 			$("#pokemonBattle").show();
@@ -472,6 +473,7 @@ $(document).ready(function() {
 							enemyPokeHealth = 1;
 							invOpen = "false";
 							attacking = "false";
+							inTallGrass = "false";
 						}, 1000);
 					} else if (d <= 0.7) { // 20% chance
 						invOpen = "true";
@@ -508,6 +510,7 @@ $(document).ready(function() {
 							enemyPokeHealth = 1;
 							invOpen = "false";
 							attacking = "false";
+							inTallGrass = "false";
 						}, 1000);
 					}
 				}
@@ -683,6 +686,7 @@ $(document).ready(function() {
 							enemyPokeHealth = 1;
 							invOpen = "false";
 							attacking = "false";
+							inTallGrass = "false";
 						}, 1000);
 					} else if (d <= 0.7) { // 20% chance
 						invOpen = "true";
@@ -719,6 +723,7 @@ $(document).ready(function() {
 							enemyPokeHealth = 1;
 							invOpen = "false";
 							attacking = "false";
+							inTallGrass = "false";
 						}, 1000);
 					}
 				}
