@@ -80,7 +80,7 @@ $(document).ready(function() {
 				if (inTallGrass === "true") {
 					startBattle("false");
 					howManyTimesMoved = 0;
-					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
+					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15; 
 				}
 				howManyTimesMoved += 1;
       	$('#player').animate({left: "-=10px"}, 50);
@@ -242,30 +242,69 @@ $(document).ready(function() {
 		$("#pokemon0MedicineDiv").click(function(){
 			$("#pokemon0HealthMedicine").attr('value', pokemonMedicineHealthAry[0] += healthAddedFromPotions);
 			$("#pokemon0Health").attr('value', pokemonMedicineHealthAry[0]);
+			
+			if (pokemonMedicineHealthAry[0] > 1) {
+				pokemonMedicineHealthAry[0] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[0];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[0]);
 		});
 		$("#pokemon1MedicineDiv").click(function(){
 			$("#pokemon1HealthMedicine").attr('value', pokemonMedicineHealthAry[1] += healthAddedFromPotions);
 			$("#pokemon1Health").attr('value', pokemonMedicineHealthAry[1]);
+			
+			if (pokemonMedicineHealthAry[1] > 1) {
+				pokemonMedicineHealthAry[1] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[5];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
 		});
 		$("#pokemon2MedicineDiv").click(function(){
 			$("#pokemon2HealthMedicine").attr('value', pokemonMedicineHealthAry[2] += healthAddedFromPotions);
 			$("#pokemon2Health").attr('value', pokemonMedicineHealthAry[2]);
+			
+			if (pokemonMedicineHealthAry[2] > 1) {
+				pokemonMedicineHealthAry[2] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[5];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
 		});
-		$("#pokemon1MedicineDiv").click(function(){
+		$("#pokemon3MedicineDiv").click(function(){
 			$("#pokemon3HealthMedicine").attr('value', pokemonMedicineHealthAry[3] += healthAddedFromPotions);
 			$("#pokemon3Health").attr('value', pokemonMedicineHealthAry[3]);
+			
+			if (pokemonMedicineHealthAry[3] > 1) {
+				pokemonMedicineHealthAry[3] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[5];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
 		});
 		$("#pokemon4MedicineDiv").click(function(){
 			$("#pokemon4HealthMedicine").attr('value', pokemonMedicineHealthAry[4] += healthAddedFromPotions);
 			$("#pokemon4Health").attr('value', pokemonMedicineHealthAry[4]);
+			
+			if (pokemonMedicineHealthAry[4] > 1) {
+				pokemonMedicineHealthAry[4] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[5];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
 		});
 			$("#pokemon5MedicineDiv").click(function(){
 			$("#pokemon5HealthMedicine").attr('value', pokemonMedicineHealthAry[5] += healthAddedFromPotions);
 			$("#pokemon5Health").attr('value', pokemonMedicineHealthAry[5]);
+			
+			if (pokemonMedicineHealthAry[5] > 1) {
+				pokemonMedicineHealthAry[5] = 1;
+			}
+			playerPokeHealth = pokemonMedicineHealthAry[5];
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+			/*$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[5]);
+			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[5]);*/
 		});
 	});
 	
   function startBattle() {
+  	inTallGrass = "false";
 	  var pokemonEnemy = allPokemonInGame[Math.floor(Math.random() * allPokemonInGame.length)];
 	  if (pokemonEnemy === "Pikachu") {
 			enemyPokeName = "Pikachu";
@@ -402,12 +441,6 @@ $(document).ready(function() {
 						}
 					}
 					});
-					$("#playersPokemonAttackListBackBtn").click(function() {
-						$("#playersPokemonAttackListBackBtn").hide();
-						$("#playersPokemonAttackList").hide();
-						$("#pokemonAttackBtn").show();
-						$("#runButton").show();
-					});
 				} else if (currentplayerPokemon === "Charmander") {
 				}
 				
@@ -474,6 +507,13 @@ $(document).ready(function() {
 						}, 1000);
 					}
 				}
+				
+			});
+			$("#playersPokemonAttackListBackBtn").click(function() {
+				$("#playersPokemonAttackListBackBtn").hide();
+				$("#playersPokemonAttackList").hide();
+				$("#pokemonAttackBtn").show();
+				$("#runButton").show();
 			});
 		} else { // End of ranAgain 
 			enemyPokeHealth = 1;
@@ -612,12 +652,6 @@ $(document).ready(function() {
 						}
 					}
 					});
-					$("#playersPokemonAttackListBackBtn").click(function() {
-						$("#playersPokemonAttackListBackBtn").hide();
-						$("#playersPokemonAttackList").hide();
-						$("#pokemonAttackBtn").show();
-						$("#runButton").show();
-					});
 				} else if (currentplayerPokemon === "Charmander") {
 				}
 				
@@ -685,6 +719,12 @@ $(document).ready(function() {
 					}
 				}
 			});
+			$("#playersPokemonAttackListBackBtn").click(function() {
+				$("#playersPokemonAttackListBackBtn").hide();
+				$("#playersPokemonAttackList").hide();
+				$("#pokemonAttackBtn").show();
+				$("#runButton").show();
+			});
 		}
 	}
 	function enemyAttack() {
@@ -699,13 +739,28 @@ $(document).ready(function() {
 		if (attackDmg === normalAttackDmg) {
 			$("#whatHappens").append("The wild " + enemyPokeName + " used " + chooseEnemyMove());
 			$("#pokemonBattleHealth").attr('value', playerPokeHealth -= normalAttackDmg);
+			
+			pokemonMedicineHealthAry[currentPokemonArrayElem] = playerPokeHealth;
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 		}
 		if (attackDmg === 0.18) {
 			$("#whatHappens").append("The wild " + enemyPokeName + " used " + chooseEnemyMove() + ", it was a super effective hit!");
 			$("#pokemonBattleHealth").attr('value', playerPokeHealth -= 0.08);
+			
+			pokemonMedicineHealthAry[currentPokemonArrayElem] = playerPokeHealth;
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 		} else {
 			$("#whatHappens").append("The wild " + enemyPokeName + " used " + chooseEnemyMove());
 			$("#pokemonBattleHealth").attr('value', playerPokeHealth -= 0.06);
+			
+			pokemonMedicineHealthAry[currentPokemonArrayElem] = playerPokeHealth;
+			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
+			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 		}
 		setTimeout(function(){
 			$("#whatsHappeningInBattle").hide();
@@ -1030,7 +1085,7 @@ $(document).ready(function() {
 	}
 	
 	
- function collision($div1, $div2) {
+	function collision($div1, $div2) {
         var x1 = $div1.offset().left;
         var y1 = $div1.offset().top;
         var h1 = $div1.outerHeight(true);
@@ -1046,7 +1101,6 @@ $(document).ready(function() {
 
         if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
         return true;
-}
+	}
 
-//Test
 });
