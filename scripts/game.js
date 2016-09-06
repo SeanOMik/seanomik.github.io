@@ -81,6 +81,7 @@ $(document).ready(function() {
 					startBattle("false");
 					howManyTimesMoved = 0;
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15; 
+					inTallGrass = "false";
 				}
 				howManyTimesMoved += 1;
       	$('#player').animate({left: "-=10px"}, 50);
@@ -93,6 +94,7 @@ $(document).ready(function() {
 					startBattle("false");
 					howManyTimesMoved = 0;
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
+					inTallGrass = "false";
 				}
 				howManyTimesMoved += 1;
       	$('#player').animate({top: "-=10px"}, 50);
@@ -105,6 +107,7 @@ $(document).ready(function() {
 					startBattle("false");
 					howManyTimesMoved = 0;
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
+					inTallGrass = "false";
 				}
 				howManyTimesMoved += 1;
         $('#player').animate({left: "+=10px"}, 50);
@@ -117,6 +120,7 @@ $(document).ready(function() {
 					startBattle("false");
 					howManyTimesMoved = 0;
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
+					inTallGrass = "false";
 				}
 				howManyTimesMoved += 1;
         $('#player').animate({top: "+=10px"}, 50);
