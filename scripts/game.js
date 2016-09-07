@@ -4,6 +4,7 @@ $(document).ready(function() {
   var inventory = "<div id='inventory'></div>";
   var pokemonCenter0 = "<img id=pokemonCenter0 src=images/buildings/pokemon_center.png>";
   var pokemonCenter0Inside = "<img id=pokemonCenterInside0 src=images/buildings/inside/pokemon_center_inside.png>";
+  //var pokemonCenterBackgroundInside = "<div id=pokemonCenterInsideBackground></div>";
   var invOpen;
   var havePokemon = "true";
 	var enemyPokemonDead = "false";
@@ -36,10 +37,13 @@ $(document).ready(function() {
   $("#medicineMenu").hide();
   $('#map').prepend(player);
   $("#map").prepend(pokemonCenter0Inside);
+  
+  //$("#map").prepend(pokemonCenterBackgroundInside);
 	$("#map").prepend(tallGrass);
 	$("#map").prepend(pokemonCenter0);
   $("#pokemonListMedicine").hide();
 	$("#playersPokemonAttackList").hide();
+	$("#pokemonCenterInsideBackground").hide();
 	$("#pokemonCenterInside0").hide();
 	//Move Arrays
 	var bulbasaurAttacks = ["VineWhip", "Growl"];
@@ -88,8 +92,12 @@ $(document).ready(function() {
         	$("#pokemonCenterInside0").show();
         	$("#pokemonCenter0").hide();
         	$("#tallGrass").hide();
-        	$("#player").hide();
-					invOpen = "true";
+        	//$("#player").hide();
+        	$("#pokemonCenter0Door").hide();
+        	$("#pokemonCenterInsideBackground").show();
+        	$("#player").width(125);
+        	$("#player").height(125);
+					//invOpen = "true";
 				}
         
 				if (inTallGrass === "true") {
@@ -110,8 +118,12 @@ $(document).ready(function() {
         	$("#pokemonCenterInside0").show();
         	$("#pokemonCenter0").hide();
         	$("#tallGrass").hide();
-        	$("#player").hide();
-					invOpen = "true";
+        	//$("#player").hide();
+        	$("#pokemonCenter0Door").hide();
+        	$("#pokemonCenterInsideBackground").show();
+        	$("#player").width(125);
+        	$("#player").height(125);
+					//invOpen = "true";
 				}
         
 				if (inTallGrass === "true") {
@@ -132,8 +144,12 @@ $(document).ready(function() {
         	$("#pokemonCenterInside0").show();
         	$("#pokemonCenter0").hide();
         	$("#tallGrass").hide();
-        	$("#player").hide();
-					invOpen = "true";
+        	//$("#player").hide();
+        	$("#pokemonCenter0Door").hide();
+        	$("#pokemonCenterInsideBackground").show();
+        	$("#player").width(125);
+        	$("#player").height(125);
+					//invOpen = "true";
 				}
         
 				if (inTallGrass === "true") {
@@ -154,8 +170,12 @@ $(document).ready(function() {
         	$("#pokemonCenterInside0").show();
         	$("#pokemonCenter0").hide();
         	$("#tallGrass").hide();
-        	$("#player").hide();
-					invOpen = "true";
+        	//$("#player").hide();
+        	$("#pokemonCenter0Door").hide();
+        	$("#pokemonCenterInsideBackground").show();
+        	$("#player").width(125);
+        	$("#player").height(125);
+					//invOpen = "true";
 				}
         
 				if (inTallGrass === "true") {
@@ -180,7 +200,7 @@ $(document).ready(function() {
         	$("#inventory").hide();
     			$("#pokemonList").hide();
        	  $("#medicineMenu").hide();
-          invOpen = "false";
+          //invOpen = "false";
         }
         break;
       case 82:

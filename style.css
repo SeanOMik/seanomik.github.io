@@ -419,11 +419,19 @@
 	height: 700px;
   width: 1000px;
 }
+#pokemonCenterInsideBackground {
+	height: 700px;
+  width: 1400px;
+  background-color: black;
+}
 /*Tall grass's*/
 #tallGrass {
 	position: absolute;
 	top: 100px;
 	left: 0px;
+}
+#pokemonCenterDiv0 {
+
 }
 
 /*Moves */
