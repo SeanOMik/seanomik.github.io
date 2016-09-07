@@ -4,6 +4,7 @@ $(document).ready(function() {
   var inventory = "<div id='inventory'></div>";
   var pokemonCenter0 = "<img id=pokemonCenter0 src=images/buildings/pokemon_center.png>";
   var pokemonCenter0Inside = "<img id=pokemonCenterInside0 src=images/buildings/inside/pokemon_center_inside.png>";
+  var pokemonCenterLeave ="<div id=pokemonCenterLeave></div>"
   //var pokemonCenterBackgroundInside = "<div id=pokemonCenterInsideBackground></div>";
   var invOpen;
   var havePokemon = "true";
@@ -37,7 +38,7 @@ $(document).ready(function() {
   $("#medicineMenu").hide();
   $('#map').prepend(player);
   $("#map").prepend(pokemonCenter0Inside);
-  
+  $("#map").prepend(pokemonCenterLeave);
   //$("#map").prepend(pokemonCenterBackgroundInside);
 	$("#map").prepend(tallGrass);
 	$("#map").prepend(pokemonCenter0);
@@ -45,6 +46,7 @@ $(document).ready(function() {
 	$("#playersPokemonAttackList").hide();
 	$("#pokemonCenterInsideBackground").hide();
 	$("#pokemonCenterInside0").hide();
+	$("#pokemonCenterLeave").hide();
 	//Move Arrays
 	var bulbasaurAttacks = ["VineWhip", "Growl"];
 	var pikachuAttacks = ["ThunderBolt", "Growl"];
@@ -97,6 +99,7 @@ $(document).ready(function() {
         	$("#pokemonCenterInsideBackground").show();
         	$("#player").width(125);
         	$("#player").height(125);
+        	$("#pokemonCenterLeave").show();
 					//invOpen = "true";
 				}
         
@@ -123,6 +126,7 @@ $(document).ready(function() {
         	$("#pokemonCenterInsideBackground").show();
         	$("#player").width(125);
         	$("#player").height(125);
+        	$("#pokemonCenterLeave").show();
 					//invOpen = "true";
 				}
         
@@ -149,6 +153,7 @@ $(document).ready(function() {
         	$("#pokemonCenterInsideBackground").show();
         	$("#player").width(125);
         	$("#player").height(125);
+        	$("#pokemonCenterLeave").show();
 					//invOpen = "true";
 				}
         
@@ -175,6 +180,7 @@ $(document).ready(function() {
         	$("#pokemonCenterInsideBackground").show();
         	$("#player").width(125);
         	$("#player").height(125);
+        	$("#pokemonCenterLeave").show();
 					//invOpen = "true";
 				}
         
