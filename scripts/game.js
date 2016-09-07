@@ -2,6 +2,8 @@ $(document).ready(function() {
   var player = "<img id=player src=images/pokemonPlayer.gif>";
 	var tallGrass = "<img id=tallGrass src=images/environment/tallGrass.png>";
   var inventory = "<div id='inventory'></div>";
+  var pokemonCenter0 = "<img id=pokemonCenter0 src=images/buildings/pokemon_center.png>";
+  var pokemonCenter0Inside = "<img id=pokemonCenterInside0 src=images/buildings/inside/pokemon_center_inside.png>";
   var invOpen;
   var havePokemon = "true";
 	var enemyPokemonDead = "false";
@@ -27,14 +29,18 @@ $(document).ready(function() {
   //Setup
   var allPokemonInGame = ["Pikachu", "Bulbasaur", "Charmander"];
 	$("#pokemonBattle").hide();
+	$("#pokemonCenterInside0").hide();
 	$("#chooseNewBattlePokemon").hide();
   $("#pokemonList").hide();
   $("#inventory").hide();
   $("#medicineMenu").hide();
   $('#map').prepend(player);
+  $("#map").prepend(pokemonCenter0Inside);
 	$("#map").prepend(tallGrass);
+	$("#map").prepend(pokemonCenter0);
   $("#pokemonListMedicine").hide();
 	$("#playersPokemonAttackList").hide();
+	$("#pokemonCenterInside0").hide();
 	//Move Arrays
 	var bulbasaurAttacks = ["VineWhip", "Growl"];
 	var pikachuAttacks = ["ThunderBolt", "Growl"];
@@ -74,9 +80,18 @@ $(document).ready(function() {
 		//$("#map").append(collision($("#player"), $("#tallGrass")) + " ");
 		switch (parseInt(key.which, 10)) {
 			case 37: // Left arrow key pressed
-      		if(invOpen == "true") {
+      	if(invOpen == "true") {
         		break;
         }
+        
+        if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
+        	$("#pokemonCenterInside0").show();
+        	$("#pokemonCenter0").hide();
+        	$("#tallGrass").hide();
+        	$("#player").hide();
+					invOpen = "true";
+				}
+        
 				if (inTallGrass === "true") {
 					startBattle("false");
 					howManyTimesMoved = 0;
@@ -90,6 +105,15 @@ $(document).ready(function() {
     		if(invOpen == "true") {
         		break;
         }
+        
+        if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
+        	$("#pokemonCenterInside0").show();
+        	$("#pokemonCenter0").hide();
+        	$("#tallGrass").hide();
+        	$("#player").hide();
+					invOpen = "true";
+				}
+        
 				if (inTallGrass === "true") {
 					startBattle("false");
 					howManyTimesMoved = 0;
@@ -103,6 +127,15 @@ $(document).ready(function() {
     		if(invOpen == "true") {
         		break;
         }
+        
+        if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
+        	$("#pokemonCenterInside0").show();
+        	$("#pokemonCenter0").hide();
+        	$("#tallGrass").hide();
+        	$("#player").hide();
+					invOpen = "true";
+				}
+        
 				if (inTallGrass === "true") {
 					startBattle("false");
 					howManyTimesMoved = 0;
@@ -116,6 +149,15 @@ $(document).ready(function() {
      		if(invOpen == "true") {
         		break;
         }
+        
+        if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
+        	$("#pokemonCenterInside0").show();
+        	$("#pokemonCenter0").hide();
+        	$("#tallGrass").hide();
+        	$("#player").hide();
+					invOpen = "true";
+				}
+        
 				if (inTallGrass === "true") {
 					startBattle("false");
 					howManyTimesMoved = 0;
@@ -126,13 +168,13 @@ $(document).ready(function() {
         $('#player').animate({top: "+=10px"}, 50);
         break;
       case 73: //Inv Open
-	    if (invOpen === "true") {
-			break;
-		}
-      	$("#inventory").show();
-        $("#pokeList").hide();
-        invOpen = "true";
-        break;
+	   	if (invOpen === "true") {
+				break;
+			}
+      $("#inventory").show();
+      $("#pokeList").hide();
+      invOpen = "true";
+      break;
       case 27:
       	if(invOpen == "true") {
         	$("#inventory").hide();
@@ -1095,21 +1137,19 @@ $(document).ready(function() {
 	
 	
 	function collision($div1, $div2) {
-        var x1 = $div1.offset().left;
-        var y1 = $div1.offset().top;
-        var h1 = $div1.outerHeight(true);
-        var w1 = $div1.outerWidth(true);
-        var b1 = y1 + h1;
-        var r1 = x1 + w1;
-        var x2 = $div2.offset().left;
-        var y2 = $div2.offset().top;
-        var h2 = $div2.outerHeight(true);
-        var w2 = $div2.outerWidth(true);
-        var b2 = y2 + h2;
-        var r2 = x2 + w2;
-
-        if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-        return true;
+    var x1 = $div1.offset().left;
+    var y1 = $div1.offset().top;
+    var h1 = $div1.outerHeight(true);
+    var w1 = $div1.outerWidth(true);
+    var b1 = y1 + h1;
+    var r1 = x1 + w1;
+    var x2 = $div2.offset().left;
+    var y2 = $div2.offset().top;
+    var h2 = $div2.outerHeight(true);
+    var w2 = $div2.outerWidth(true);
+    var b2 = y2 + h2;
+    var r2 = x2 + w2;
+    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+  	return true;
 	}
-
 });
