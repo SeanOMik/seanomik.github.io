@@ -8,6 +8,7 @@ $(document).ready(function() {
   var pokemonCenterLeave ="<div id=pokemonCenterLeave></div>"
   //var pokemonCenterBackgroundInside = "<div id=pokemonCenterInsideBackground></div>";
   var invOpen;
+	var gifSetAgain = false;
   var havePokemon = "true";
 	var enemyPokemonDead = "false";
 	var attacking = "false";
@@ -20,6 +21,7 @@ $(document).ready(function() {
 	var enemyPokeHealth = 1;
 	var playerSpeed = "10px";
 	var inPokeCenter = false;
+	var isPokeCenterDeskColsEnabled = false;
 	var currentplayerPokemon;
   //var pokemonHealthAry = ["#pokemon0Health, ", "#pokemon1Health, ", "#pokemon2Health, ", "#pokemon3Health, ", "#pokemon4Health, ", "#pokemon5Health"];
   //Arrays
@@ -50,6 +52,9 @@ $(document).ready(function() {
 	$("#pokemonCenterInsideBackground").hide();
 	$("#pokemonCenterInside0").hide();
 	$("#pokemonCenterLeave").hide();
+	$("#pokemonCenterDeskCol0").hide();
+	$("#pokemonCenterDeskCol1").hide();
+	$("#pokemonCenterDeskCol2").hide();
 	//Move Arrays
 	var bulbasaurAttacks = ["VineWhip", "Growl"];
 	var pikachuAttacks = ["ThunderBolt", "Growl"];
@@ -82,9 +87,54 @@ $(document).ready(function() {
   $("#pokemon5HealthMedicine").hide();
 	//Pokemon battle health
 	$("#pokemonBattleHealth").hide();
+	$(document).keyup(function(key) {
+		switch (parseInt(key.which, 10)) {
+			case 37: // Left arrow up
+				$("#player").attr("src", "images/player_gifs/run/left/player_left2.png");
+				gifSetAgain = false;
+				$("#player").stop(true).animate({"left" : "-=0px"});
+				break;
+			case 38: // Up arrow up
+				$("#player").attr("src", "images/player_gifs/run/back/player_back2.png");
+				gifSetAgain = false;
+				$("#player").stop(true).animate({"top" : "-=0px"});
+				break;
+			case 39: // Right arrow up
+				$("#player").attr("src", "images/player_gifs/run/right/player_right2.png");
+				gifSetAgain = false;
+				$("#player").stop(true).animate({"left" : "+=0px"});
+				break;
+			case 40: // Down arrow up
+				$("#player").attr("src", "images/player_gifs/run/front/player_frontTPOS.png");
+				gifSetAgain = false;
+				$("#player").stop(true).animate({"top" : "+=0px"});
+				break;
+		}
+	});
 	$(document).keydown(function(key) {
+		
 		if (collision($("#player"), $("#tallGrass")) == true) {
 			inGrass();
+		}
+		
+		if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
+			$("#player").stop(true).animate({"top" : "+=1px"});
+			$("#player").stop(true).animate({"top" : "-=1px"});
+			$("#player").stop(true).animate({"left" : "+=1px"});
+			$("#player").stop(true).animate({"left" : "-=1px"});
+		}
+		
+		if (collision($("#player"), $("#pokemonCenterDeskCol1")) == true && isPokeCenterDeskColsEnabled == true) {
+			$("#player").stop(true).animate({"top" : "+=1px"});
+			$("#player").stop(true).animate({"top" : "-=1px"});
+			$("#player").stop(true).animate({"left" : "+=1px"});
+			$("#player").stop(true).animate({"left" : "-=1px"});
+		}
+		if (collision($("#player"), $("#pokemonCenterDeskCol2")) == true && isPokeCenterDeskColsEnabled == true) {
+			$("#player").stop(true).animate({"top" : "+=1px"});
+			$("#player").stop(true).animate({"top" : "-=1px"});
+			$("#player").stop(true).animate({"left" : "+=1px"});
+			$("#player").stop(true).animate({"left" : "-=1px"});
 		}
 		
 		//$("#map").append(collision($("#player"), $("#tallGrass")) + " ");
@@ -94,6 +144,10 @@ $(document).ready(function() {
         		break;
         }
         
+				if (gifSetAgain === false) {
+					$("#player").attr("src", "images/player_gifs/run/left/run_LEFT.gif");
+				}
+				
         if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
@@ -101,12 +155,16 @@ $(document).ready(function() {
         	//$("#player").hide();
         	$("#pokemonCenter0Door").show();
         	$("#pokemonCenterInsideBackground").hide();
-        	$("#player").width(40);
-        	$("#player").height(59);
+        	$("#player").width(27);
+        	$("#player").height(40.5);
         	$("#pokemonCenterLeave").hide();
         	playerSpeed = "10px";
 					//invOpen = "true";
 					inPokeCenter = false;
+					$("#pokemonCenterDeskCol0").show();
+					$("#pokemonCenterDeskCol1").show();
+					$("#pokemonCenterDeskCol2").show();
+					isPokeCenterDeskColsEnabled = false;
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -122,6 +180,7 @@ $(document).ready(function() {
         	playerSpeed = "15px";
 					//invOpen = "true";
 					inPokeCenter = true;
+					isPokeCenterDeskColsEnabled = true;
 				}
         
 				if (inTallGrass === "true") {
@@ -132,12 +191,17 @@ $(document).ready(function() {
 				}
 				howManyTimesMoved += 1;
       	$('#player').animate({left: "-=" + playerSpeed}, 50);
+				gifSetAgain = true;
       	break;
       case 38: // Up Arrow Pressed
     		if(invOpen == "true") {
         		break;
         }
         
+				if (gifSetAgain === false) {
+					$("#player").attr("src", "images/player_gifs/run/back/run_BACK.gif");
+				}
+				
         if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
@@ -145,12 +209,16 @@ $(document).ready(function() {
         	//$("#player").hide();
         	$("#pokemonCenter0Door").show();
         	$("#pokemonCenterInsideBackground").hide();
-        	$("#player").width(40);
-        	$("#player").height(59);
+        	$("#player").width(27);
+        	$("#player").height(40.5);
         	$("#pokemonCenterLeave").hide();
         	playerSpeed = "10px";
 					//invOpen = "true";
 					inPokeCenter = false;
+					$("#pokemonCenterDeskCol0").show();
+					$("#pokemonCenterDeskCol1").show();
+					$("#pokemonCenterDeskCol2").show();
+					isPokeCenterDeskColsEnabled = false;
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -166,6 +234,7 @@ $(document).ready(function() {
         	playerSpeed = "15px";
 					//invOpen = "true";
 					inPokeCenter = true;
+					isPokeCenterDeskColsEnabled = true;
 				}
         
 				if (inTallGrass === "true") {
@@ -176,12 +245,17 @@ $(document).ready(function() {
 				}
 				howManyTimesMoved += 1;
       	$('#player').animate({top: "-=" + playerSpeed}, 50);
+				gifSetAgain = true;
         break;
       case 39:  // Right Arrow Pressed
     		if(invOpen == "true") {
         		break;
         }
         
+				if (gifSetAgain === false) {
+					$("#player").attr("src", "images/player_gifs/run/right/run_RIGHT.gif");
+				}
+				
         if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
@@ -189,12 +263,16 @@ $(document).ready(function() {
         	//$("#player").hide();
         	$("#pokemonCenter0Door").show();
         	$("#pokemonCenterInsideBackground").hide();
-        	$("#player").width(40);
-        	$("#player").height(59);
+        	$("#player").width(27);
+        	$("#player").height(40.5);
         	$("#pokemonCenterLeave").hide();
         	playerSpeed = "10px";
 					//invOpen = "true";
 					inPokeCenter = false;
+					$("#pokemonCenterDeskCol0").show();
+					$("#pokemonCenterDeskCol1").show();
+					$("#pokemonCenterDeskCol2").show();
+					isPokeCenterDeskColsEnabled = false;
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -210,6 +288,7 @@ $(document).ready(function() {
         	playerSpeed = "15px";
 					//invOpen = "true";
 					inPokeCenter = true;
+					isPokeCenterDeskColsEnabled = true;
 				}
         
 				if (inTallGrass === "true") {
@@ -220,11 +299,17 @@ $(document).ready(function() {
 				}
 				howManyTimesMoved += 1;
         $('#player').animate({left: "+=" + playerSpeed}, 50);
+				gifSetAgain = true;
         break;
       case 40: // Down Arrow Pressed
      		if(invOpen == "true") {
         		break;
         }
+				
+				if (gifSetAgain === false) {
+					$("#player").attr("src", "images/player_gifs/run/front/run_TPOS.gif");
+				}
+				
         if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
@@ -232,12 +317,16 @@ $(document).ready(function() {
         	//$("#player").hide();
         	$("#pokemonCenter0Door").show();
         	$("#pokemonCenterInsideBackground").hide();
-        	$("#player").width(40);
-        	$("#player").height(59);
+        	$("#player").width(27);
+        	$("#player").height(40.5);
         	$("#pokemonCenterLeave").hide();
         	playerSpeed = "10px";
 					//invOpen = "true";
 					inPokeCenter = false;
+					$("#pokemonCenterDeskCol0").show();
+					$("#pokemonCenterDeskCol1").show();
+					$("#pokemonCenterDeskCol2").show();
+					isPokeCenterDeskColsEnabled = false;
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -253,6 +342,7 @@ $(document).ready(function() {
         	playerSpeed = "15px";
 					//invOpen = "true";
 					inPokeCenter = true;
+					isPokeCenterDeskColsEnabled = true;
 				}
         
 				if (inTallGrass === "true") {
@@ -262,10 +352,8 @@ $(document).ready(function() {
 					inTallGrass = "false";
 				}
 				howManyTimesMoved += 1;
-				//$("#player").atrr("src", 'images/pokemonPlayer_forward.gif');
         $('#player').animate({top: "+=" + playerSpeed}, 50);
-        //$("#player").attr("src", "images/player_front1.png");
-        
+        gifSetAgain = true;
         break;
       case 73: //Inv Open
 	   	if (invOpen === "true") {

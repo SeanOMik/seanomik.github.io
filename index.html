@@ -1,82 +1,25 @@
-<!DOCTYPE html>
 <html lang="en">
   
   <head>
     <meta charset="utf-8">
-    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
-    <meta name="dcterms.created" content="Thu, 25 Aug 2016 23:08:55 GMT">
     <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title>Pokémon</title>
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <meta name="keywords" content="seanomik.github.io">
+    <title>Pokémon Lock</title>
 	<script src="scripts/jquery-3.1.0.min.js"></script>
-	<script src="scripts/game.js"></script>
+	<script src="scripts/lock.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styleLock.css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   </head>
+	
   <body>
-  <div id="map">
-  <!--<div class="progress"> <div id ="pokemonBattleHealth" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"> <span class="sr-only">70% Complete</span> </div> </div> -->
-	
-	<!--<img id="pokemonCenter0" src="images/buildings/pokemon_center.png"> -->
-	
-	<div id="pokemonCenterDiv0"> <!--pokemonCenter0-->
-		<!--<img id="pokemonCenterInside0" src="images/buildings/inside/pokemon_center_inside.png">-->
-		<div id="pokemonCenter0Door"></div>
-		<div id="pokemonCenterInsideBackground"></div>
-		<div id="pokemonCenterLeave"></div>
-	</div> 
-	<div id="pokemonBattle">
-		<button id="pokemonAttackBtn">Attack</button>
-		<button id="runButton">Run</button>
-		<progress id="pokemonBattleHealth">Health</progress>
-		<div id="playersPokemon"></div>
-		<div id="enemyPokemonNameHealth"></div>
-		<progress id="enemyHealth"></progress>
-		<div id="playersPokemonAttackList">  </div>
-		<button id="playersPokemonAttackListBackBtn">Back</button>
-		<div id="whatsHappeningInBattle"><p id ="whatHappens"></p></div>
-		<div id="pokemonEnemy"></div>
-		
-		<div id="chooseNewBattlePokemon">
-			<img id="chooseNewBattlePokemonIMG0"> <progress id="chooseNewBattlePokemonHealth0"></progress> <div id="chooseNewBattlePokemonDiv0"></div>
-			<img id="chooseNewBattlePokemonIMG1"> <progress id="chooseNewBattlePokemonHealth1"></progress> <div id="chooseNewBattlePokemonDiv1"></div>
-			<img id="chooseNewBattlePokemonIMG2"> <progress id="chooseNewBattlePokemonHealth2"></progress> <div id="chooseNewBattlePokemonDiv2"></div>
-			<img id="chooseNewBattlePokemonIMG3"> <progress id="chooseNewBattlePokemonHealth3"></progress> <div id="chooseNewBattlePokemonDiv3"></div>
-			<img id="chooseNewBattlePokemonIMG4"> <progress id="chooseNewBattlePokemonHealth4"></progress> <div id="chooseNewBattlePokemonDiv4"></div>
-			<img id="chooseNewBattlePokemonIMG5"> <progress id="chooseNewBattlePokemonHealth5"></progress> <div id="chooseNewBattlePokemonDiv5"></div>
-		</div>
-	</div>
-		<div id="inventory">
-			<button id="invbutton">Pokémon</button>
-			<button id="medicineBtn">Medicine</button>
-			<button id="exitInventory">Exit</button>
-		</div>
-			<div id="medicineMenu">
-			<button id="medicineBackBtn">Back</button>
-		</div> 
-		<div id="pokemonList">
-			<img id="pokemon0"> <progress id="pokemon0Health">Health</progress>
-			<img id="pokemon1"> <progress id="pokemon1Health">Health</progress>
-			<img id="pokemon2"> <progress id="pokemon2Health">Health</progress>
-			<img id="pokemon3"> <progress id="pokemon3Health">Health</progress>
-			<img id="pokemon4"> <progress id="pokemon4Health">Health</progress>
-			<img id="pokemon5"> <progress id="pokemon5Health">Health</progress>
-			<button id="pokemonListBackBtn">Back</button>
-		</div>
-		<div id="pokemonListMedicine">
-			<img id="pokemon0Medicine"> <progress id="pokemon0HealthMedicine">Health</progress> <div id="pokemon0MedicineDiv"></div>
-			<img id="pokemon1Medicine"> <progress id="pokemon1HealthMedicine">Health</progress> <div id="pokemon1MedicineDiv"></div>
-			<img id="pokemon2Medicine"> <progress id="pokemon2HealthMedicine">Health</progress> <div id="pokemon2MedicineDiv"></div>
-			<img id="pokemon3Medicine"> <progress id="pokemon3HealthMedicine">Health</progress> <div id="pokemon3MedicineDiv"></div>
-			<img id="pokemon4Medicine"> <progress id="pokemon4HealthMedicine">Health</progress> <div id="pokemon4MedicineDiv"></div>
-			<img id="pokemon5Medicine"> <progress id="pokemon5HealthMedicine">Health</progress> <div id="pokemon5MedicineDiv"></div>
-			<button id="pokemonListMedicineBackBtn">Back</button>
-		</div>
-	</div>
-<!--<div class="progress" style="width:200px"> <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%" > <span class="sr-only">70% Complete</span> </div> </div>-->
-
+	<span></span>
+		<form id="form">
+			<input id="login" type="text" placeholder="Login" required>
+			<input id="pass" type="password" placeholder="Password" required>
+			<!--<button id="submit" type="submit">Submit</button>-->
+			<input type="submit" value="Go">
+		</form>
   </body>
 </html>
