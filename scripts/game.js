@@ -49,12 +49,17 @@ $(document).ready(function() {
 	$("#map").prepend(pokemonCenter0);
   $("#pokemonListMedicine").hide();
 	$("#playersPokemonAttackList").hide();
+	
+	
 	$("#pokemonCenterInsideBackground").hide();
 	$("#pokemonCenterInside0").hide();
 	$("#pokemonCenterLeave").hide();
 	$("#pokemonCenterDeskCol0").hide();
 	$("#pokemonCenterDeskCol1").hide();
 	$("#pokemonCenterDeskCol2").hide();
+	$("#pokemonHealDiv").hide();
+	
+	
 	//Move Arrays
 	var bulbasaurAttacks = ["VineWhip", "Growl"];
 	var pikachuAttacks = ["ThunderBolt", "Growl"];
@@ -113,29 +118,35 @@ $(document).ready(function() {
 	});
 	$(document).keydown(function(key) {
 		
+		if (collision($("#player"), $("#pokemonHealDiv")) == true) {
+			
+			$("#pokemonHealDiv").hide();
+		}
+		
+		
 		if (collision($("#player"), $("#tallGrass")) == true) {
 			inGrass();
 		}
 		
-		if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
+		/*if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
 			$("#player").stop(true).animate({"top" : "+=1px"});
 			$("#player").stop(true).animate({"top" : "-=1px"});
-			$("#player").stop(true).animate({"left" : "+=1px"});
-			$("#player").stop(true).animate({"left" : "-=1px"});
+			//$("#player").stop(true).animate({"left" : "+=1px"});
+			//$("#player").stop(true).animate({"left" : "-=1px"});
 		}
 		
 		if (collision($("#player"), $("#pokemonCenterDeskCol1")) == true && isPokeCenterDeskColsEnabled == true) {
-			$("#player").stop(true).animate({"top" : "+=1px"});
-			$("#player").stop(true).animate({"top" : "-=1px"});
+			//$("#player").stop(true).animate({"top" : "+=1px"});
+			//$("#player").stop(true).animate({"top" : "-=1px"});
 			$("#player").stop(true).animate({"left" : "+=1px"});
 			$("#player").stop(true).animate({"left" : "-=1px"});
 		}
 		if (collision($("#player"), $("#pokemonCenterDeskCol2")) == true && isPokeCenterDeskColsEnabled == true) {
-			$("#player").stop(true).animate({"top" : "+=1px"});
-			$("#player").stop(true).animate({"top" : "-=1px"});
+			//$("#player").stop(true).animate({"top" : "+=1px"});
+			//$("#player").stop(true).animate({"top" : "-=1px"});
 			$("#player").stop(true).animate({"left" : "+=1px"});
 			$("#player").stop(true).animate({"left" : "-=1px"});
-		}
+		}*/
 		
 		//$("#map").append(collision($("#player"), $("#tallGrass")) + " ");
 		switch (parseInt(key.which, 10)) {
@@ -165,6 +176,7 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol1").show();
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
+					$("#pokemonHealDiv").hide();
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -181,6 +193,7 @@ $(document).ready(function() {
 					//invOpen = "true";
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
+					$("#pokemonHealDiv").show();
 				}
         
 				if (inTallGrass === "true") {
@@ -189,8 +202,14 @@ $(document).ready(function() {
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15; 
 					inTallGrass = "false";
 				}
+				
+				if (collision($("#player"), $("#pokemonCenterDeskCol2")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"left" : "-=1px"});
+				} else {
+					$('#player').animate({left: "-=" + playerSpeed}, 50);
+				}
 				howManyTimesMoved += 1;
-      	$('#player').animate({left: "-=" + playerSpeed}, 50);
+      	
 				gifSetAgain = true;
       	break;
       case 38: // Up Arrow Pressed
@@ -219,6 +238,7 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol1").show();
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
+					$("#pokemonHealDiv").hide();
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -235,6 +255,7 @@ $(document).ready(function() {
 					//invOpen = "true";
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
+					$("#pokemonHealDiv").show();
 				}
         
 				if (inTallGrass === "true") {
@@ -243,8 +264,15 @@ $(document).ready(function() {
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
 					inTallGrass = "false";
 				}
+				
+				if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"top" : "+=1px"});
+				} else {
+					$('#player').animate({top: "-=" + playerSpeed}, 50);
+				}
+				
 				howManyTimesMoved += 1;
-      	$('#player').animate({top: "-=" + playerSpeed}, 50);
+      	
 				gifSetAgain = true;
         break;
       case 39:  // Right Arrow Pressed
@@ -273,6 +301,7 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol1").show();
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
+					$("#pokemonHealDiv").hide();
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -289,6 +318,7 @@ $(document).ready(function() {
 					//invOpen = "true";
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
+					$("#pokemonHealDiv").show();
 				}
         
 				if (inTallGrass === "true") {
@@ -297,8 +327,14 @@ $(document).ready(function() {
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
 					inTallGrass = "false";
 				}
+			
+				if (collision($("#player"), $("#pokemonCenterDeskCol1")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"left" : "-=1px"});
+				} else {
+					$('#player').animate({left: "+=" + playerSpeed}, 50);
+				}
+				
 				howManyTimesMoved += 1;
-        $('#player').animate({left: "+=" + playerSpeed}, 50);
 				gifSetAgain = true;
         break;
       case 40: // Down Arrow Pressed
@@ -327,6 +363,7 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol1").show();
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
+					$("#pokemonHealDiv").hide();
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -343,6 +380,7 @@ $(document).ready(function() {
 					//invOpen = "true";
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
+					$("#pokemonHealDiv").show();
 				}
         
 				if (inTallGrass === "true") {
@@ -1340,4 +1378,6 @@ $(document).ready(function() {
     if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
   	return true;
 	}
+	
+	
 });
