@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   
+  
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
@@ -11,17 +12,51 @@
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
 	<script src="scripts/jquery-3.1.0.min.js"></script>
 	<script src="scripts/game.js"></script>
+	<script src="scripts/plugins/jquery.jplayer.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   </head>
   <body>
+  
+  
+  
+  <!--<script type="text/javascript">
+    $(document).ready(function(){
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function() {
+          $(this).jPlayer("setMedia", {
+            mp3: "audio/background/Selenia_City.mp3"
+          }).jPlayer("play");
+          
+          $("#jquery_jplayer_1").jPlayer("volume", 1);
+          
+          var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+          var kickoff = function () {
+            $("#jquery_jplayer_1").jPlayer("play");
+            document.documentElement.removeEventListener(click, kickoff, true);
+          };
+          document.documentElement.addEventListener(click, kickoff, true);
+        },
+        swfPath: "/js",
+        loop: true
+      });
+    });
+  </script>-->
+  
+  
+  
+  
+  
+  <div id="jquery_jplayer_1"></div>
+  <div id="jquery_jplayer_2"></div>
+  
+  
+  
   <div id="map">
   <!--<div class="progress"> <div id ="pokemonBattleHealth" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"> <span class="sr-only">70% Complete</span> </div> </div> -->
 	
-	<img id="healingPokemonMsgDia" src="images/msgDialog.jpg">
-	<div id="healingPokemonMsgDiaTextDiv"></div>
 	
 	<!--<img id="pokemonCenter0" src="images/buildings/pokemon_center.png"> -->
 	<div id="pokemonCenterDiv0"> <!--pokemonCenter0-->
@@ -35,6 +70,13 @@
 		<div id="pokemonCenterDeskCol2"></div>
 		
 		<div id="pokemonHealDiv"></div>
+		
+		<div id="healingPokeMsgDiv">
+			<img id="healingPokemonMsgDia" src="images/msgDialog.jpg">
+			<div id="healingPokemonMsgDiaTextDiv">
+				<p id="healingPokeMsgDiaText">ERROR: DID NOT SET VARAIBLE. RESTART</p>
+			</div>
+		</div>
 	</div> 
 	<div id="pokemonBattle">
 		<button id="pokemonAttackBtn">Attack</button>

@@ -7,6 +7,9 @@ $(document).ready(function() {
   var pokemonCenter0Inside = "<img id=pokemonCenterInside0 src=images/buildings/inside/pokemon_center_inside.png>";
   var pokemonCenterLeave ="<div id=pokemonCenterLeave></div>"
   //var pokemonCenterBackgroundInside = "<div id=pokemonCenterInsideBackground></div>";
+  
+  playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.50);
+  
   var invOpen;
 	var gifSetAgain = false;
   var havePokemon = "true";
@@ -58,6 +61,8 @@ $(document).ready(function() {
 	$("#pokemonCenterDeskCol1").hide();
 	$("#pokemonCenterDeskCol2").hide();
 	$("#pokemonHealDiv").hide();
+	
+	$("#healingPokeMsgDiv").hide();
 	
 	
 	//Move Arrays
@@ -117,10 +122,24 @@ $(document).ready(function() {
 		}
 	});
 	$(document).keydown(function(key) {
+		var forPokeCenter = "10";
 		
-		if (collision($("#player"), $("#pokemonHealDiv")) == true) {
-			
+		
+		if (collision($("#pokemonHealDiv"), $("#player")) == true && inPokeCenter == true) {
+			invOpen = "true";
+			$("#healingPokeMsgDiv").show();
+			$("#healingPokeMsgDiaText").text("Let me take your Pokémon to heal them...");
 			$("#pokemonHealDiv").hide();
+			setTimeout(function(){
+				$("#healingPokeMsgDiaText").text("Thank you, here are your Pokémon.");
+				$("#pokemonHealDiv").hide();
+				setTimeout(function(){
+					$("#healingPokeMsgDiv").hide();
+					$("#healingPokeMsgDiaText").text("ERROR: DID NOT SET VARAIBLE. RESTART");
+					$("#pokemonHealDiv").hide();
+					invOpen = "false";
+				}, 2000);
+			}, 2000);
 		}
 		
 		
@@ -154,6 +173,8 @@ $(document).ready(function() {
       	if(invOpen == "true") {
         		break;
         }
+        
+        
         
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/left/run_LEFT.gif");
@@ -194,6 +215,11 @@ $(document).ready(function() {
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
 					$("#pokemonHealDiv").show();
+					
+					
+					
+					$("#jquery_jplayer_1").jPlayer("stop");
+					playBackgroundMusic("#jquery_jplayer_1", "audio/buildings/pokecenter/Pokemon_Center.mp3", 0.50);
 				}
         
 				if (inTallGrass === "true") {
@@ -414,6 +440,9 @@ $(document).ready(function() {
         break;
 			case 81:
 				enemyAttack();
+				break;
+			case 66:
+				$("#jquery_jplayer_1").jPlayer("stop");
 				break;
       }
     });
@@ -1379,5 +1408,27 @@ $(document).ready(function() {
   	return true;
 	}
 	
+	
+	function playBackgroundMusic(divID, musicPath, vol) {
+	$("#jquery_jplayer_1").jPlayer({
+    ready: function() {
+      $(this).jPlayer("setMedia", {
+        //mp3: "audio/background/Selenia_City.mp3"
+        mp3: musicPath
+      }).jPlayer("play");
+          
+      $(divID).jPlayer("volume", vol);
+          
+      var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+      var kickoff = function () {
+       $(divID).jPlayer("play");
+    		 document.documentElement.removeEventListener(click, kickoff, true);
+       };
+         document.documentElement.addEventListener(click, kickoff, true);
+       },
+       swfPath: "/js",
+       loop: true
+    });
+	}
 	
 });

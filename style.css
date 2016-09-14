@@ -469,8 +469,9 @@
 }
 #healingPokemonMsgDia {
 	color: blue;
-	font-family: "mainFont";
-	src: url('font/mainFont.TFF');
+	font-family: "Pokemon_GB";
+  src: url(font/Pokemon_GB.TFF »
+  Pokemon_GB.ttf) format("Pokemon_GB");
 	
 	position: absolute;
 	top: 500px;
@@ -478,10 +479,7 @@
 }
 
 #healingPokemonMsgDiaTextDiv {
-	background-color: red;
 	color: blue;
-	font-family: "mainFont";
-	src: url('font/mainFont.TFF');
 	width: 100px;
 	height: 100px;
 	
@@ -489,11 +487,17 @@
 	top: 510px;
 	left: 400px;
 }
+#healingPokeMsgDiaText {
+	color: blue;
+	font-family: "Pokemon_GB";
+  src: url(font/Pokemon_GB.TFF »
+  Pokemon_GB.ttf) format("Pokemon_GB");
+}
 
 
 #font-face {
-	font-family: "mainFont";
-	src: url('font/mainFont.TFF')
+	font-family: "Pokemon_GB";
+	src: url('font/Pokemon_GB.TFF')
 }
 
 
