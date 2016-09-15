@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var player = "<img id=player src=images/pokemonPlayer_forward.gif>";
+  var player = "<img id=player src=images/player_gifs/run/front/run_TPOS.gif>";
   //var player = "<img id=player src=images/player_front1.png>";
 	var tallGrass = "<img id=tallGrass src=images/environment/tallGrass.png>";
   var inventory = "<div id='inventory'></div>";
@@ -147,25 +147,8 @@ $(document).ready(function() {
 			inGrass();
 		}
 		
-		/*if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
-			$("#player").stop(true).animate({"top" : "+=1px"});
-			$("#player").stop(true).animate({"top" : "-=1px"});
-			//$("#player").stop(true).animate({"left" : "+=1px"});
-			//$("#player").stop(true).animate({"left" : "-=1px"});
-		}
-		
-		if (collision($("#player"), $("#pokemonCenterDeskCol1")) == true && isPokeCenterDeskColsEnabled == true) {
-			//$("#player").stop(true).animate({"top" : "+=1px"});
-			//$("#player").stop(true).animate({"top" : "-=1px"});
-			$("#player").stop(true).animate({"left" : "+=1px"});
-			$("#player").stop(true).animate({"left" : "-=1px"});
-		}
-		if (collision($("#player"), $("#pokemonCenterDeskCol2")) == true && isPokeCenterDeskColsEnabled == true) {
-			//$("#player").stop(true).animate({"top" : "+=1px"});
-			//$("#player").stop(true).animate({"top" : "-=1px"});
-			$("#player").stop(true).animate({"left" : "+=1px"});
-			$("#player").stop(true).animate({"left" : "-=1px"});
-		}*/
+		var isPaused1 = false;
+		var isPaused2 = true;
 		
 		//$("#map").append(collision($("#player"), $("#tallGrass")) + " ");
 		switch (parseInt(key.which, 10)) {
@@ -173,14 +156,16 @@ $(document).ready(function() {
       	if(invOpen == "true") {
         		break;
         }
-        
+				
         
         
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/left/run_LEFT.gif");
 				}
 				
-        if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
+				
+				
+        if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
         	$("#tallGrass").show();
@@ -198,6 +183,20 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
 					$("#pokemonHealDiv").hide();
+					$("#jquery_jplayer_2").jPlayer("stop");
+					
+					if (isPaused2 == false && isPaused1 == true) {
+						
+						isPaused1 = false;
+						isPaused2 = true;
+						
+						$("#jquery_jplayer_2").jPlayer("stop");
+						$("#jquery_jplayer_1").jPlayer("play");
+					}
+					
+					
+					$("#jquery_jplayer_1").jPlayer("play");
+					//playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.50);
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -216,10 +215,37 @@ $(document).ready(function() {
 					isPokeCenterDeskColsEnabled = true;
 					$("#pokemonHealDiv").show();
 					
-					
-					
 					$("#jquery_jplayer_1").jPlayer("stop");
-					playBackgroundMusic("#jquery_jplayer_1", "audio/buildings/pokecenter/Pokemon_Center.mp3", 0.50);
+					if (isPaused1 == false && isPaused2 == false) {
+						$("#jquery_jplayer_2").jPlayer("stop");
+						isPaused2 = true;
+					} else if (isPaused2 == true && isPaused1 == false) {
+						
+						isPaused1 = true;
+						isPaused2 = false;
+						
+						$("#jquery_jplayer_1").jPlayer("stop");
+						
+						$("#jquery_jplayer_2").jPlayer({
+							ready: function() {
+							$(this).jPlayer("setMedia", {
+								mp3: "audio/buildings/pokecenter/Pokemon_Center.mp3"
+							}).jPlayer("play");
+						
+							$("#jquery_jplayer_2").jPlayer("volume", 0.50);
+						
+							var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+							var kickoff = function () {
+								$("#jquery_jplayer_2").jPlayer("play");
+								document.documentElement.removeEventListener(click, kickoff, true);
+							};
+								document.documentElement.addEventListener(click, kickoff, true);
+							},
+								swfPath: "/js",
+								loop: true
+						});
+						
+					}
 				}
         
 				if (inTallGrass === "true") {
@@ -247,7 +273,7 @@ $(document).ready(function() {
 					$("#player").attr("src", "images/player_gifs/run/back/run_BACK.gif");
 				}
 				
-        if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
+        if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
         	$("#tallGrass").show();
@@ -265,6 +291,20 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
 					$("#pokemonHealDiv").hide();
+					$("#jquery_jplayer_2").jPlayer("stop");
+					
+					if (isPaused2 == false && isPaused1 == true) {
+						
+						isPaused1 = false;
+						isPaused2 = true;
+						
+						$("#jquery_jplayer_2").jPlayer("stop");
+						$("#jquery_jplayer_1").jPlayer("play");
+					}
+					
+					
+					$("#jquery_jplayer_1").jPlayer("play");
+					//playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.50);
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -282,6 +322,38 @@ $(document).ready(function() {
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
 					$("#pokemonHealDiv").show();
+					
+					$("#jquery_jplayer_1").jPlayer("stop");
+					if (isPaused1 == false && isPaused2 == false) {
+						$("#jquery_jplayer_2").jPlayer("stop");
+						isPaused2 = true;
+					} else if (isPaused2 == true && isPaused1 == false) {
+						
+						isPaused1 = true;
+						isPaused2 = false;
+						
+						$("#jquery_jplayer_1").jPlayer("stop");
+						
+						$("#jquery_jplayer_2").jPlayer({
+							ready: function() {
+							$(this).jPlayer("setMedia", {
+								mp3: "audio/buildings/pokecenter/Pokemon_Center.mp3"
+							}).jPlayer("play");
+						
+							$("#jquery_jplayer_2").jPlayer("volume", 0.50);
+						
+							var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+							var kickoff = function () {
+								$("#jquery_jplayer_2").jPlayer("play");
+								document.documentElement.removeEventListener(click, kickoff, true);
+							};
+								document.documentElement.addEventListener(click, kickoff, true);
+							},
+								swfPath: "/js",
+								loop: true
+						});
+						
+					}
 				}
         
 				if (inTallGrass === "true") {
@@ -310,7 +382,8 @@ $(document).ready(function() {
 					$("#player").attr("src", "images/player_gifs/run/right/run_RIGHT.gif");
 				}
 				
-        if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
+				
+        if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
         	$("#tallGrass").show();
@@ -328,6 +401,20 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
 					$("#pokemonHealDiv").hide();
+					$("#jquery_jplayer_2").jPlayer("stop");
+					
+					if (isPaused2 == false && isPaused1 == true) {
+						
+						isPaused1 = false;
+						isPaused2 = true;
+						
+						$("#jquery_jplayer_2").jPlayer("stop");
+						$("#jquery_jplayer_1").jPlayer("play");
+					}
+					
+					
+					$("#jquery_jplayer_1").jPlayer("play");
+					//playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.50);
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -345,6 +432,38 @@ $(document).ready(function() {
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
 					$("#pokemonHealDiv").show();
+					
+					$("#jquery_jplayer_1").jPlayer("stop");
+					if (isPaused1 == false && isPaused2 == false) {
+						$("#jquery_jplayer_2").jPlayer("stop");
+						isPaused2 = true;
+					} else if (isPaused2 == true && isPaused1 == false) {
+						
+						isPaused1 = true;
+						isPaused2 = false;
+						
+						$("#jquery_jplayer_1").jPlayer("stop");
+						
+						$("#jquery_jplayer_2").jPlayer({
+							ready: function() {
+							$(this).jPlayer("setMedia", {
+								mp3: "audio/buildings/pokecenter/Pokemon_Center.mp3"
+							}).jPlayer("play");
+						
+							$("#jquery_jplayer_2").jPlayer("volume", 0.50);
+						
+							var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+							var kickoff = function () {
+								$("#jquery_jplayer_2").jPlayer("play");
+								document.documentElement.removeEventListener(click, kickoff, true);
+							};
+								document.documentElement.addEventListener(click, kickoff, true);
+							},
+								swfPath: "/js",
+								loop: true
+						});
+						
+					}
 				}
         
 				if (inTallGrass === "true") {
@@ -372,7 +491,8 @@ $(document).ready(function() {
 					$("#player").attr("src", "images/player_gifs/run/front/run_TPOS.gif");
 				}
 				
-        if (collision($("#player"), $("#pokemonCenterLeave")) == true) {
+				
+        if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true) {
         	$("#pokemonCenterInside0").hide();
         	$("#pokemonCenter0").show();
         	$("#tallGrass").show();
@@ -390,6 +510,20 @@ $(document).ready(function() {
 					$("#pokemonCenterDeskCol2").show();
 					isPokeCenterDeskColsEnabled = false;
 					$("#pokemonHealDiv").hide();
+					$("#jquery_jplayer_2").jPlayer("stop");
+					
+					if (isPaused2 == false && isPaused1 == true) {
+						
+						isPaused1 = false;
+						isPaused2 = true;
+						
+						$("#jquery_jplayer_2").jPlayer("stop");
+						$("#jquery_jplayer_1").jPlayer("play");
+					}
+					
+					
+					$("#jquery_jplayer_1").jPlayer("play");
+					//playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.50);
 				}
         
         if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
@@ -407,6 +541,38 @@ $(document).ready(function() {
 					inPokeCenter = true;
 					isPokeCenterDeskColsEnabled = true;
 					$("#pokemonHealDiv").show();
+					
+					$("#jquery_jplayer_1").jPlayer("stop");
+					if (isPaused1 == false && isPaused2 == false) {
+						$("#jquery_jplayer_2").jPlayer("stop");
+						isPaused2 = true;
+					} else if (isPaused2 == true && isPaused1 == false) {
+						
+						isPaused1 = true;
+						isPaused2 = false;
+						
+						$("#jquery_jplayer_1").jPlayer("stop");
+						
+						$("#jquery_jplayer_2").jPlayer({
+							ready: function() {
+							$(this).jPlayer("setMedia", {
+								mp3: "audio/buildings/pokecenter/Pokemon_Center.mp3"
+							}).jPlayer("play");
+						
+							$("#jquery_jplayer_2").jPlayer("volume", 0.50);
+						
+							var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+							var kickoff = function () {
+								$("#jquery_jplayer_2").jPlayer("play");
+								document.documentElement.removeEventListener(click, kickoff, true);
+							};
+								document.documentElement.addEventListener(click, kickoff, true);
+							},
+								swfPath: "/js",
+								loop: true
+						});
+						
+					}
 				}
         
 				if (inTallGrass === "true") {
@@ -442,7 +608,11 @@ $(document).ready(function() {
 				enemyAttack();
 				break;
 			case 66:
+				$("#jquery_jplayer_2").jPlayer("stop");
+				break;
+			case 70:
 				$("#jquery_jplayer_1").jPlayer("stop");
+				$("#jquery_jplayer_2").jPlayer("stop");
 				break;
       }
     });
