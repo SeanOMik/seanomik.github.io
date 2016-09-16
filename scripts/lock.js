@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("form").submit(function(event){
 		
 		if( $("#login").val() === "pokemonLove13" && $("#pass").val() === "pokemonFans13School") {
-			window.location.replace("https://seanomik.github.io/game");
+			window.location.replace("game");
 			event.preventDefault();
 			return;
 		}
