@@ -1215,8 +1215,7 @@ $(document).ready(function() {
 			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 			$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
-		}
-		if (attackDmg === 0.18) {
+		} else if (attackDmg === 0.18) {
 			$("#whatHappens").append("The wild " + enemyPokeName + " used " + chooseEnemyMove() + ", it was a super effective hit!");
 			$("#pokemonBattleHealth").attr('value', playerPokeHealth -= 0.08);
 			
@@ -1224,7 +1223,7 @@ $(document).ready(function() {
 			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 			$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
 			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[currentPokemonArrayElem]);
-		} else {
+		} else if (attackDmg === 0.1) {
 			$("#whatHappens").append("The wild " + enemyPokeName + " used " + chooseEnemyMove());
 			$("#pokemonBattleHealth").attr('value', playerPokeHealth -= 0.06);
 			
