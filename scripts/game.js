@@ -9,9 +9,13 @@ $(document).ready(function() {
   //var pokemonCenterBackgroundInside = "<div id=pokemonCenterInsideBackground></div>";
   
   playBackgroundMusic("#jquery_jplayer_1", "audio/background/Violet_City.mp3", 0.25);
+	
   
 	var inPokeCenterHealDiv = false;
 	var pokeCenterAudioSetup = false;
+	var battleAudioSetup = false;
+	var battleTransitionAudioSetup = false;
+	var battleMusicSrc = ["audio/battle/battle1.mp3", "audio/battle/battle2.mp3"];
 	
   var invOpen = "false";
 	var gifSetAgain = false;
@@ -409,6 +413,8 @@ $(document).ready(function() {
 			howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15; 
 			inTallGrass = false;
 			invOpen = "true";
+			
+			
 		}
 		
 		if (collision($("#player"), $("#tallGrass")) == true) {
@@ -528,6 +534,7 @@ $(document).ready(function() {
 			case 70:
 				$("#jquery_jplayer_1").jPlayer("stop");
 				$("#jquery_jplayer_2").jPlayer("stop");
+				$("#jquery_jplayer_4").jPlayer("stop");
 				break;
       }
     });
@@ -713,7 +720,39 @@ $(document).ready(function() {
 		if (invOpen == "true") {
 			return;
     }
-				
+		
+		$("#jquery_jplayer_1").jPlayer("stop");
+		$("#jquery_jplayer_2").jPlayer("stop");
+		$("#jquery_jplayer_4").jPlayer("stop");
+		$("#jquery_jplayer_5").jPlayer("stop");
+		if (battleAudioSetup == false){
+			$("#jquery_jplayer_4").jPlayer({
+				ready: function() {
+					$(this).jPlayer("setMedia", {
+						mp3: "audio/battle/battle1.mp3"
+						//mp3: chooseBattleMusic();
+					}).jPlayer("play");
+					
+					$("#jquery_jplayer_4").jPlayer("volume", 0.25);
+					
+					var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+					var kickoff = function () {
+						$("#jquery_jplayer_4").jPlayer("play");
+							document.documentElement.removeEventListener(click, kickoff, true);
+						};
+							document.documentElement.addEventListener(click, kickoff, true);
+						},
+							swfPath: "/js",
+							loop: true
+			});
+				battleAudioSetup == true;
+		} else if (battleAudioSetup == true) {
+			$("#jquery_jplayer_1").jPlayer("stop");
+			$("#jquery_jplayer_2").jPlayer("stop");
+			$("#jquery_jplayer_4").jPlayer("play");
+		}
+		
+		
 		$("#grassBackground").hide();
 		inTallGrass = "false";
 		if (ranAgain === "true") {
@@ -777,6 +816,9 @@ $(document).ready(function() {
 										invOpen = "false";
 										attacking = "false";
 										$("#grassBackground").show();
+										
+										$("#jquery_jplayer_1").jPlayer("play");
+										$("#jquery_jplayer_4").jPlayer("stop");
 									}, 1000);
 								}	
 							}, 1000); 
@@ -832,7 +874,10 @@ $(document).ready(function() {
 										enemyPokeHealth = 1;
 										invOpen = "false";
 										attacking = "false";
-										$("#grassBackground").show();
+										$("#grassBackground").show();										
+										
+										$("#jquery_jplayer_1").jPlayer("play");
+										$("#jquery_jplayer_4").jPlayer("stop");
 									}, 1000);
 								}	
 							}, 1000); 
@@ -867,7 +912,10 @@ $(document).ready(function() {
 							invOpen = "false";
 							attacking = "false";
 							inTallGrass = "false";
-							$("#grassBackground").show();
+							$("#grassBackground").show();										
+										
+							$("#jquery_jplayer_1").jPlayer("play");
+							$("#jquery_jplayer_4").jPlayer("stop");
 						}, 1000);
 					} else if (d <= 0.7) { // 20% chance
 						invOpen = "true";
@@ -905,7 +953,10 @@ $(document).ready(function() {
 							invOpen = "false";
 							attacking = "false";
 							inTallGrass = "false";
-							$("#grassBackground").show();
+							$("#grassBackground").show();										
+										
+							$("#jquery_jplayer_1").jPlayer("play");
+							$("#jquery_jplayer_4").jPlayer("stop");
 						}, 1000);
 					}
 				}
@@ -993,7 +1044,10 @@ $(document).ready(function() {
 										enemyPokeHealth = 1;
 										invOpen = "false";
 										attacking = "false";
-										$("#grassBackground").show();
+										$("#grassBackground").show();										
+										
+										$("#jquery_jplayer_1").jPlayer("play");
+										$("#jquery_jplayer_4").jPlayer("stop");
 									}, 1000);
 								}	
 							}, 1000); 
@@ -1049,7 +1103,10 @@ $(document).ready(function() {
 										enemyPokeHealth = 1;
 										invOpen = "false";
 										attacking = "false";
-										$("#grassBackground").show();
+										$("#grassBackground").show();										
+										
+										$("#jquery_jplayer_1").jPlayer("play");
+										$("#jquery_jplayer_4").jPlayer("stop");
 									}, 1000);
 								}	
 							}, 1000); 
@@ -1084,7 +1141,10 @@ $(document).ready(function() {
 							invOpen = "false";
 							attacking = "false";
 							inTallGrass = "false";
-							$("#grassBackground").show();
+							$("#grassBackground").show();										
+							
+							$("#jquery_jplayer_1").jPlayer("play");
+							$("#jquery_jplayer_4").jPlayer("stop");
 						}, 1000);
 					} else if (d <= 0.7) { // 20% chance
 						invOpen = "true";
@@ -1122,7 +1182,10 @@ $(document).ready(function() {
 							invOpen = "false";
 							attacking = "false";
 							inTallGrass = "false";
-							$("#grassBackground").show();
+							$("#grassBackground").show();										
+							
+							$("#jquery_jplayer_1").jPlayer("play");
+							$("#jquery_jplayer_4").jPlayer("stop");
 						}, 1000);
 					}
 				}
@@ -1201,8 +1264,10 @@ $(document).ready(function() {
 				playerPokeHealth = 1;
 				invOpen = "false";
 				attacking = "false";
-				inTallGrass = "false";*/
+				inTallGrass = "false";
 				$("#grassBackground").show();
+				$("#jquery_jplayer_1").jPlayer("play");
+				$("#jquery_jplayer_4").jPlayer("stop");*/
 			}, 1500);
 		}
 	}
@@ -1212,6 +1277,8 @@ $(document).ready(function() {
 			$("#whatHappens").empty();
 			$("#whatsHappeningInBattle").show();
 			$("#whatHappens").append("There aren't any available Pokèmon!");
+			$("#jquery_jplayer_1").jPlayer("stop");
+			$("#jquery_jplayer_4").jPlayer("play");
 			setTimeout(function() {
 				$("#playersPokemonAttackListBackBtn").hide();
 				$("#playersPokemonAttackList").empty();
@@ -1228,7 +1295,12 @@ $(document).ready(function() {
 				playerPokeHealth = 1;
 				invOpen = "false";
 				attacking = "false";
-				inTallGrass = "false";
+				inTallGrass = "false";				
+				
+				$("#grassBackground").show();
+				
+				$("#jquery_jplayer_1").jPlayer("play");
+				$("#jquery_jplayer_4").jPlayer("stop");
 			}, 1700);
 		} else {
 			if (pokemonAry.length > 1) {
@@ -1455,7 +1527,7 @@ $(document).ready(function() {
 	function chooseEnemyMove() {
 		var chosenMove;
 		if (enemyPokeName === "Pikachu") {
-		chosenMove = pikachuAttacks[Math.floor(Math.random() * pikachuAttacks.length)];
+			chosenMove = pikachuAttacks[Math.floor(Math.random() * pikachuAttacks.length)];
 			chosenMove = "ThunderBolt";
 			return chosenMove;
 		} else if (enemyPokeName === "Bulbasaur") {
@@ -1534,4 +1606,8 @@ $(document).ready(function() {
     });
 	}
 	
+	function chooseBattleMusic() {
+		var choosenMusic = battleMusicSrc[Math.floor(Math.random() * battleMusicSrc.length)];
+		return choosenMusic;
+	}
 });
