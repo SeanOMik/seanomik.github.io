@@ -1,0 +1,14 @@
+#mainLogo1 {
+	position: relative;
+	top: 30px;
+	left: 500px;
+}
+#border {
+	position: relative;
+  border: 1px solid black;
+  height: 700px;
+  width: 1400px;
+}
+#background {
+	
+}
