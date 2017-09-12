@@ -17,6 +17,8 @@ $(document).ready(function() {
 	var battleTransitionAudioSetup = false;
 	var battleMusicSrc = ["audio/battle/battle1.mp3", "audio/battle/battle2.mp3"];
 	
+	var allPlayerPokeDead = false;
+	
   var invOpen = "false";
 	var gifSetAgain = false;
   var havePokemon = "true";
@@ -1275,7 +1277,9 @@ $(document).ready(function() {
 		if (pokemonMedicineHealthAry[0] <= 0 && pokemonMedicineHealthAry[1] <= 0 && pokemonMedicineHealthAry[2] <= 0 && pokemonMedicineHealthAry[3] <= 0 && pokemonMedicineHealthAry[4] <= 0 && pokemonMedicineHealthAry[5] <= 0) {
 			$("#whatHappens").empty();
 			$("#whatsHappeningInBattle").show();
+			allPlayerPokeDead = true;
 			$("#whatHappens").append("There aren't any available Pokèmon!");
+			
 			$("#jquery_jplayer_1").jPlayer("stop");
 			$("#jquery_jplayer_4").jPlayer("play");
 			setTimeout(function() {
@@ -1294,7 +1298,7 @@ $(document).ready(function() {
 				playerPokeHealth = 1;
 				invOpen = "false";
 				attacking = "false";
-				inTallGrass = "false";				
+				inTallGrass = "false";
 				
 				$("#grassBackground").show();
 				
