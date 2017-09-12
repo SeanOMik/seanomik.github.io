@@ -630,72 +630,75 @@ $(document).ready(function() {
 			$("#pokemonListMedicine").show();
 			$("#medicineMenu").hide();
 		});
-		$("#pokemonListMedicineBackBtn").click(function(){
-			$("#pokemonListMedicine").hide();
-			$("#medicineMenu").show();
-		});
-		$("#pokemon0MedicineDiv").click(function(){
-			$("#pokemon0HealthMedicine").attr('value', pokemonMedicineHealthAry[0] += healthAddedFromPotions);
-			$("#pokemon0Health").attr('value', pokemonMedicineHealthAry[0]);
-			
-			if (pokemonMedicineHealthAry[0] > 1) {
-				pokemonMedicineHealthAry[0] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[0];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[0]);
-		});
-		$("#pokemon1MedicineDiv").click(function(){
-			$("#pokemon1HealthMedicine").attr('value', pokemonMedicineHealthAry[1] += healthAddedFromPotions);
-			$("#pokemon1Health").attr('value', pokemonMedicineHealthAry[1]);
-			
-			if (pokemonMedicineHealthAry[1] > 1) {
-				pokemonMedicineHealthAry[1] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[5];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
-		});
-		$("#pokemon2MedicineDiv").click(function(){
-			$("#pokemon2HealthMedicine").attr('value', pokemonMedicineHealthAry[2] += healthAddedFromPotions);
-			$("#pokemon2Health").attr('value', pokemonMedicineHealthAry[2]);
-			
-			if (pokemonMedicineHealthAry[2] > 1) {
-				pokemonMedicineHealthAry[2] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[5];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
-		});
-		$("#pokemon3MedicineDiv").click(function(){
-			$("#pokemon3HealthMedicine").attr('value', pokemonMedicineHealthAry[3] += healthAddedFromPotions);
-			$("#pokemon3Health").attr('value', pokemonMedicineHealthAry[3]);
-			
-			if (pokemonMedicineHealthAry[3] > 1) {
-				pokemonMedicineHealthAry[3] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[5];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
-		});
-		$("#pokemon4MedicineDiv").click(function(){
-			$("#pokemon4HealthMedicine").attr('value', pokemonMedicineHealthAry[4] += healthAddedFromPotions);
-			$("#pokemon4Health").attr('value', pokemonMedicineHealthAry[4]);
-			
-			if (pokemonMedicineHealthAry[4] > 1) {
-				pokemonMedicineHealthAry[4] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[5];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
-		});
-			$("#pokemon5MedicineDiv").click(function(){
-			$("#pokemon5HealthMedicine").attr('value', pokemonMedicineHealthAry[5] += healthAddedFromPotions);
-			$("#pokemon5Health").attr('value', pokemonMedicineHealthAry[5]);
-			
-			if (pokemonMedicineHealthAry[5] > 1) {
-				pokemonMedicineHealthAry[5] = 1;
-			}
-			playerPokeHealth = pokemonMedicineHealthAry[5];
-			$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
-			/*$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[5]);
-			$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[5]);*/
-		});
+		if (allPlayerPokeDead == false) then {
+			$("#pokemonListMedicineBackBtn").click(function(){
+				$("#pokemonListMedicine").hide();
+				$("#medicineMenu").show();
+			});
+			$("#pokemon0MedicineDiv").click(function(){
+				$("#pokemon0HealthMedicine").attr('value', pokemonMedicineHealthAry[0] += healthAddedFromPotions);
+				$("#pokemon0Health").attr('value', pokemonMedicineHealthAry[0]);
+
+				if (pokemonMedicineHealthAry[0] > 1) {
+					pokemonMedicineHealthAry[0] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[0];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[0]);
+			});
+			$("#pokemon1MedicineDiv").click(function(){
+				$("#pokemon1HealthMedicine").attr('value', pokemonMedicineHealthAry[1] += healthAddedFromPotions);
+				$("#pokemon1Health").attr('value', pokemonMedicineHealthAry[1]);
+
+				if (pokemonMedicineHealthAry[1] > 1) {
+					pokemonMedicineHealthAry[1] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[5];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+			});
+			$("#pokemon2MedicineDiv").click(function(){
+				$("#pokemon2HealthMedicine").attr('value', pokemonMedicineHealthAry[2] += healthAddedFromPotions);
+				$("#pokemon2Health").attr('value', pokemonMedicineHealthAry[2]);
+
+				if (pokemonMedicineHealthAry[2] > 1) {
+					pokemonMedicineHealthAry[2] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[5];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+			});
+			$("#pokemon3MedicineDiv").click(function(){
+				$("#pokemon3HealthMedicine").attr('value', pokemonMedicineHealthAry[3] += healthAddedFromPotions);
+				$("#pokemon3Health").attr('value', pokemonMedicineHealthAry[3]);
+
+				if (pokemonMedicineHealthAry[3] > 1) {
+					pokemonMedicineHealthAry[3] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[5];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+			});
+			$("#pokemon4MedicineDiv").click(function(){
+				$("#pokemon4HealthMedicine").attr('value', pokemonMedicineHealthAry[4] += healthAddedFromPotions);
+				$("#pokemon4Health").attr('value', pokemonMedicineHealthAry[4]);
+
+				if (pokemonMedicineHealthAry[4] > 1) {
+					pokemonMedicineHealthAry[4] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[5];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+			});
+				$("#pokemon5MedicineDiv").click(function(){
+				$("#pokemon5HealthMedicine").attr('value', pokemonMedicineHealthAry[5] += healthAddedFromPotions);
+				$("#pokemon5Health").attr('value', pokemonMedicineHealthAry[5]);
+
+				if (pokemonMedicineHealthAry[5] > 1) {
+					pokemonMedicineHealthAry[5] = 1;
+				}
+				playerPokeHealth = pokemonMedicineHealthAry[5];
+				$("#chooseNewBattlePokemonHealth" + currentPokemonArrayElem).attr('value', pokemonMedicineHealthAry[5]);
+				/*$("#pokemon" + currentPokemonArrayElem + "Health").attr('value', pokemonMedicineHealthAry[5]);
+				$("#pokemon" + currentPokemonArrayElem + "HealthMedicine").attr('value', pokemonMedicineHealthAry[5]);*/
+			});
+		}
+		
 	});
 	
   function startBattle() {
