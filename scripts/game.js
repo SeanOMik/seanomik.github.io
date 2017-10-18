@@ -630,7 +630,7 @@ $(document).ready(function() {
 			$("#pokemonListMedicine").show();
 			$("#medicineMenu").hide();
 		});
-		if (allPlayerPokeDead == false) then {
+		if (allPlayerPokeDead == false) {
 			$("#pokemonListMedicineBackBtn").click(function(){
 				$("#pokemonListMedicine").hide();
 				$("#medicineMenu").show();
