@@ -35,6 +35,7 @@ $(document).ready(function() {
 	var inPokeCenter = false;
 	var isPokeCenterDeskColsEnabled = false;
 	var currentplayerPokemon;
+	var playerFacing = "down";
   //var pokemonHealthAry = ["#pokemon0Health, ", "#pokemon1Health, ", "#pokemon2Health, ", "#pokemon3Health, ", "#pokemon4Health, ", "#pokemon5Health"];
   //Arrays
   var pokemonAry = ["Pikachu", "Bulbasaur"];
@@ -118,6 +119,7 @@ $(document).ready(function() {
 				$("#player").attr("src", "images/player_gifs/run/left/player_left2.png");
 				gifSetAgain = false;
 				$("#player").stop(true).animate({"left" : "-=0px"});
+				playerFacing = "left";
 				break;
 			case 38: // Up arrow up
 			
@@ -128,6 +130,7 @@ $(document).ready(function() {
 				$("#player").attr("src", "images/player_gifs/run/back/player_back2.png");
 				gifSetAgain = false;
 				$("#player").stop(true).animate({"top" : "-=0px"});
+				playerFacing = "up";
 				break;
 			case 39: // Right arrow up
 			
@@ -138,6 +141,7 @@ $(document).ready(function() {
 				$("#player").attr("src", "images/player_gifs/run/right/player_right2.png");
 				gifSetAgain = false;
 				$("#player").stop(true).animate({"left" : "+=0px"});
+				playerFacing = "right";
 				break;
 			case 40: // Down arrow up
 			
@@ -148,6 +152,7 @@ $(document).ready(function() {
 				$("#player").attr("src", "images/player_gifs/run/front/player_frontTPOS.png");
 				gifSetAgain = false;
 				$("#player").stop(true).animate({"top" : "+=0px"});
+				playerFacing = "down";
 				break;
 			case 32:
 				if (inPokeCenterHealDiv == true) {
@@ -331,7 +336,7 @@ $(document).ready(function() {
 	$(document).keydown(function(key) {
 		var forPokeCenter = "10";
 		
-		if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true) {
+		if (collision($("#player"), $("#pokemonCenterLeave")) == true && inPokeCenter == true && playerFacing == "down") {
       $("#pokemonCenterInside0").hide();
       $("#pokemonCenter0").show();
 			$("#tallGrass").show();
@@ -357,7 +362,8 @@ $(document).ready(function() {
 			$("#nurseJoy").hide();
 		}
         
-    if (collision($("#player"), $("#pokemonCenter0Door")) == true) {
+    if (collision($("#player"), $("#pokemonCenter0Door")) == true && playerFacing == "up") {
+    	invOpen = "true";
 			$("#pokemonCenterInside0").show();
 			$("#pokemonCenter0").hide();
       $("#tallGrass").hide();
@@ -366,6 +372,8 @@ $(document).ready(function() {
       $("#pokemonCenterInsideBackground").show();
       $("#player").width(60);
       $("#player").height(88.5);
+      $("#player").css("left", "667px").css("top", "500px");;
+      $("#player").attr("src", "images/player_gifs/run/back/player_back2.png");
       $("#pokemonCenterLeave").show();
       playerSpeed = "15px";
 			//invOpen = "true";
@@ -377,8 +385,6 @@ $(document).ready(function() {
 			$("#pokemonCenterDeskCol2").show();
 			$("#grassBackground").hide();
 			$("#nurseJoy").show();
-			
-			
 			if (pokeCenterAudioSetup == false) {
 				$("#jquery_jplayer_1").jPlayer("stop");
 						
@@ -407,6 +413,9 @@ $(document).ready(function() {
 					$("#jquery_jplayer_1").jPlayer("stop");
 					$("#jquery_jplayer_2").jPlayer("play");
 				}
+			setTimeout(function(){
+      	invOpen = "false";
+			}, 500);
 		}
         
 		if (inTallGrass === true) {
@@ -437,11 +446,14 @@ $(document).ready(function() {
 
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/left/run_LEFT.gif");
+					playerFacing = "left";
 				}
 				
         
 				
 				if (collision($("#player"), $("#pokemonCenterDeskCol2")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"left" : "-=1px"});
+				} else if (collision($("#player"), $("#pokeCenterOutCol1")) == true && inPokeCenter != true) {
 					$("#player").stop(true).animate({"left" : "-=1px"});
 				} else {
 					$('#player').animate({left: "-=" + playerSpeed}, 50);
@@ -450,6 +462,8 @@ $(document).ready(function() {
       	
 				gifSetAgain = true;
       	break;
+      case 81: //Q Pressed
+      	playerSpeed = "30px";
       case 38: // Up Arrow Pressed
     		if(invOpen == "true") {
         		break;
@@ -460,9 +474,12 @@ $(document).ready(function() {
 				}
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/back/run_BACK.gif");
+					playerFacing = "up";
 				}
 				
 				if (collision($("#player"), $("#pokemonCenterDeskCol0")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"top" : "+=1px"});
+				} else if (collision($("#player"), $("#pokeCenterOutCol3")) == true && inPokeCenter != true) {
 					$("#player").stop(true).animate({"top" : "+=1px"});
 				} else {
 					$('#player').animate({top: "-=" + playerSpeed}, 50);
@@ -478,9 +495,12 @@ $(document).ready(function() {
         
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/right/run_RIGHT.gif");
+					playerFacing = "right";
 				}
 				
 				if (collision($("#player"), $("#pokemonCenterDeskCol1")) == true && isPokeCenterDeskColsEnabled == true) {
+					$("#player").stop(true).animate({"left" : "-=1px"});
+				} else if (collision($("#player"), $("#pokeCenterOutCol0")) == true && inPokeCenter != true) {
 					$("#player").stop(true).animate({"left" : "-=1px"});
 				} else {
 					$('#player').animate({left: "+=" + playerSpeed}, 50);
@@ -496,6 +516,7 @@ $(document).ready(function() {
 				
 				if (gifSetAgain === false) {
 					$("#player").attr("src", "images/player_gifs/run/front/run_TPOS.gif");
+					playerFacing = "down";
 				}
 
 				if (inTallGrass === "true") {
@@ -504,6 +525,11 @@ $(document).ready(function() {
 					howManyTimesNeededToMoveForWildPokemon = Math.ceil(Math.random() * 30) + 15;
 					inTallGrass = "false";
 				}
+
+				if (collision($("#player"), $("#pokeCenterOutCol2")) == true && inPokeCenter != true) {
+					$("#player").stop(true).animate({"top" : "-=1px"});
+				}
+
 				howManyTimesMoved += 1;
         $('#player').animate({top: "+=" + playerSpeed}, 50);
         gifSetAgain = true;
@@ -527,7 +553,7 @@ $(document).ready(function() {
       case 82:
 				startBattle("false");
         break;
-			case 81:
+			case 84:
 				enemyAttack();
 				break;
 			case 66:
